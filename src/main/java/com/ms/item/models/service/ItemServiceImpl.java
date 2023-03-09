@@ -7,6 +7,7 @@ import java.util.Map;
 import java.util.stream.Collectors;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.beans.factory.annotation.Qualifier;
 import org.springframework.stereotype.Service;
 import org.springframework.web.client.RestTemplate;
 
@@ -14,6 +15,7 @@ import com.ms.item.models.Producto;
 import com.ms.item.models.entity.Item;
 
 @Service
+@Qualifier("ItemServiceImpl")
 public class ItemServiceImpl implements ItemService {
 
     @Autowired
@@ -22,7 +24,8 @@ public class ItemServiceImpl implements ItemService {
     @Override
     public List<Item> findAll() {
         List<Producto> productos = Arrays
-                .asList(clienteRestTemplate.getForObject("http://localhost:8001/listar", Producto[].class));
+                .asList(clienteRestTemplate
+                        .getForObject("http://localhost:8001/listar", Producto[].class));
         return productos
                 .stream()
                 .map(p -> new Item(p, 1))
