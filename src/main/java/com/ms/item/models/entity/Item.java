@@ -1,4 +1,6 @@
-package com.ms.item.models;
+package com.ms.item.models.entity;
+
+import com.ms.item.models.Producto;
 
 public class Item {
 
