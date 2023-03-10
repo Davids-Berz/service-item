@@ -14,6 +14,7 @@ import java.util.List;
 public class ItemController {
 
     @Autowired
+    @Qualifier("itemServiceImpl")
     private ItemService itemService;
 
     @GetMapping("/listar")
