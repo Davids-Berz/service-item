@@ -10,7 +10,7 @@ import org.springframework.web.bind.annotation.RestController;
 
 import java.util.List;
 
-@RestController
+@RestController("/api/items")
 public class ItemController {
 
     @Autowired
@@ -23,7 +23,7 @@ public class ItemController {
     }
 
     @GetMapping("/ver/{id}/cantidad/{cantidad}")
-    public Item detalle(@PathVariable Long id,@PathVariable Integer cantidad) {
+    public Item detalle(@PathVariable Long id, @PathVariable Integer cantidad) {
         return itemService.findById(id, cantidad);
     }
 }
